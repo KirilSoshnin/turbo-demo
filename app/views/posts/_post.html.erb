@@ -1,0 +1,16 @@
+<div class="card mb-2" id="<%= dom_id(post) %>">
+  <div class="card-body">
+    <h5 class="card-title text-muted">
+      <small class="float-right">
+        Posted at <%= post.created_at %>
+      </small>
+    </h5>
+    <div class="card-text lead mb-2"><%= post.body %></div>
+    <%= button_to post_likes_path(post),
+      form: { data: { 'controller': 'turbo-form' } },
+      class: 'card-link btn btn-secondary btn-sm',
+      data: { 'turbo-form-target': 'submitInput' } do %>
+        Likes (<%= post.likes_count %>)
+    <% end %>
+  </div>
+</div>

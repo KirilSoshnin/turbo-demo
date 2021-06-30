@@ -1,0 +1,10 @@
+<div class="container my-5">
+  <h1>Turbo Streams Demo</h1>
+
+  <%= render partial: 'turbo_stream_demos/form', locals: { post: @post } %>
+
+  <%= turbo_stream_from :posts %>
+  <div id='posts'>
+    <%= render @posts %>
+  </div>
+</div>
