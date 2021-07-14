@@ -1,4 +1,13 @@
 class PostsController < ApplicationController
+  def index
+    @posts = Post.where("likes_count > 0")
+    @post = Post.new
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(:posts, partial: 'posts/post', collection: @posts ) }
+      format.html { render template: 'turbo_stream_demos/show' }
+    end
+  end
+
   def create
     @post = Post.new(post_params)
     respond_to do |format|

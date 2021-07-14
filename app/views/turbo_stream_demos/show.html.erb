@@ -3,7 +3,13 @@
 
   <%= render partial: 'turbo_stream_demos/form', locals: { post: @post } %>
 
-  <%= turbo_stream_from :posts %>
+  <%= button_to 'GET PostsController#index',
+                posts_path,
+                method: :get,
+                class: 'btn btn-success',
+                form: { data: { controller: 'turbo-form' } },
+                data: { 'turbo-form-target': 'submitInput' } %>
+
   <div id='posts'>
     <%= render @posts %>
   </div>

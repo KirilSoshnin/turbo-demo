@@ -18,8 +18,8 @@ export default class extends Controller {
     const formData = new FormData(this.element)
 
     const request = new FetchRequest(this.element.method, this.element.action, {
-      body: formData,
       responseKind: 'turbo-stream',
+      ...(this.element.method !== 'get' && { body: formData })
     })
 
     await request.perform()
